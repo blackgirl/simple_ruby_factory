@@ -1,8 +1,7 @@
 #!/usr/local/bin/ruby -
 
 class Person
-
- attr_accessor :name, :sex
+ 	attr_accessor :name, :sex
  
   	def initialize(name,sex) #Constructor
 		@name = name
@@ -20,17 +19,48 @@ class Person
     def greeting
     	case @sex
 			when "man"
-			  @greeting = "Let's get drunk!"
+			    @greeting = "Let's get drunk!"
+				Man.new(@name, @greeting).dialog
 			when "woman"
-			  @greeting = "You look great! Coffee?"
+			    @greeting = "You look great! Coffee?"
+			    Woman.new(@name, @greeting).dialog
 			when "another"
-			  @greeting = "I don't have a clue who you are..."
+			  	puts @greeting = "I don't have a clue who you are..."
 			else
-			  @greeting = "You gave me #{sex} -- I have no idea what to do with that."
+			  	puts @greeting = "You gave me #{sex} -- I have no idea what to do with that."
 		end
-        puts "Hey #{@name}! #{@greeting}"
     end
     
+end
+
+class Woman
+	attr_accessor :name, :question, :answer
+
+  	def initialize(name,question) #Constructor
+		@name = name
+		@question = question
+	end
+
+	def dialog
+		@answer = "No, thanks. I'd rather drink some tea with milk."
+		puts "Hey #{@name}! #{@question} #{@answer}"
+	end
+
+end
+
+class Man
+	attr_accessor :name, :question, :answer
+
+  	def initialize(name,question) #Constructor
+		@name = name
+		@question = question
+	end
+
+	def dialog
+		@answer = "Hell yeah, bro!"
+		puts "Hey #{@name}! #{@question} #{@answer}"
+	end
+	
 end
 
 def main()
